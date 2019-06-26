@@ -6,6 +6,13 @@
 let x_pixels = 1900;
 let y_pixels = 980;
 
+// let song;
+//
+// function preload() {
+//   soundFormats('mp3', 'ogg');
+//   song = loadSound('assets/earth.mp3');
+// }
+
 // Initialization of all objects of our solar system:
 function setup() {
   createCanvas(x_pixels, y_pixels);
@@ -24,7 +31,7 @@ function setup() {
   daimos = new Moon(mars.x, mars.y, 1, 255, 255, 255, 8, 0.015);
 
   // BELT:
-  asteroids = makeBelt(100);
+  asteroids = makeBelt(100, 190);
 
   // OUTER PLANETS:
   jupiter = new Planet(sun.x, sun.y, 20, 255, 220, 50, 250, 0.006);
@@ -39,6 +46,8 @@ function setup() {
   neptun = new Planet(sun.x, sun.y, 10, 0, 10, 255, 450, 0.003);
   pluto = new Planet(sun.x, sun.y, 2, 255, 200, 10, 480, 0.002);
 
+  // Oort Cloud:
+  oort = makeBelt(200, 540);
 }
 
 // Draw stars in the background:
@@ -57,16 +66,16 @@ function makeStars(amount) {
 }
 
 // Draw stars in the background:
-function makeBelt(amount) {
+function makeBelt(amount, distance) {
   var belt = [];
 
   for (i = 0; i < amount; i++) {
     var rand_x = floor(random(x_pixels)) + 1;
     var rand_y = floor(random(y_pixels)) + 1;
     var size = floor(random(2)) + 1;
-    var distance = floor(random() * (200 - 180)) + 180;
+    var distance_range = floor(random() * ((distance + 10) - (distance - 10)) + distance - 10);
 
-    var asteroid = new Planet(sun.x, sun.y, size, 92, 64, 51, distance, 0.0005);
+    var asteroid = new Planet(sun.x, sun.y, size, 92, 64, 51, distance_range, 0.0005);
     console.log("Created new star! " + (i + 1).toString());
     belt.push(asteroid);
   }
@@ -138,10 +147,12 @@ function handleMoons() {
 
 // The MAIN draw function:
 function draw() {
+  // song.play();
   background(51);
   drawStars(stars);
   sun.show();
   handlePlanets();
   drawBelt(asteroids);
+  drawBelt(oort);
   handleMoons();
 }
