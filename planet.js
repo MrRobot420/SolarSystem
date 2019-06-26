@@ -1,3 +1,6 @@
+// A sort of object that represents a planet
+// Also handles all movements of a planet
+
 function Planet(x, y, r, red, green, blue, distance) {
   this.r = r;
   this.distance = distance;

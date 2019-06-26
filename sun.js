@@ -10,6 +10,4 @@ function Sun(x, y, r) {
     ellipse(this.x, this.y, this.r*2, this.r*2);
   }
 
-
-
 }
