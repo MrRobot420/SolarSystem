@@ -1,3 +1,4 @@
+// A planet with some disks around it:
 function DiskPlanet(x, y, r, red, green, blue, distance, velocity) {
   this.r = r;
   this.distance = distance;

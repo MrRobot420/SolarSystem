@@ -33,7 +33,7 @@ function setup() {
   europa = new Moon(jupiter.x, jupiter.y, 2, 250, 200, 200, 45, 0.01);
   io = new Moon(jupiter.x, jupiter.y, 1, 250, 200, 0, 50, 0.009);
 
-
+  // Could add some moons:
   saturn = new DiskPlanet(sun.x, sun.y, 14, 255, 250, 0, 320, 0.005);
   uranus = new DiskPlanet(sun.x, sun.y, 12, 0, 120, 255, 380, 0.004);
   neptun = new Planet(sun.x, sun.y, 10, 0, 10, 255, 450, 0.003);

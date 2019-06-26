@@ -1,5 +1,4 @@
-// Should represent a moon that circles around a planet:
-
+// Should represent a moon that circles around a planet (clockwise):
 function Moon(x, y, r, red, green, blue, distance, velocity) {
   this.r = r;
   this.distance = distance;
@@ -7,7 +6,6 @@ function Moon(x, y, r, red, green, blue, distance, velocity) {
   this.position = createVector(x + this.distance, y);
   this.radians = 0 + this.random_shift;
   this.velocity = velocity;
-
 
   this.red = red;
   this.green = green;
