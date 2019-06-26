@@ -1,12 +1,12 @@
 // Should represent a moon that circles around a planet:
 
-function Moon(x, y, r, red, green, blue, distance) {
+function Moon(x, y, r, red, green, blue, distance, velocity) {
   this.r = r;
   this.distance = distance;
-  this.random_shift = floor(random(90));
+  this.random_shift = floor(random(180));
   this.position = createVector(x + this.distance, y);
   this.radians = 0 + this.random_shift;
-  this.velocity = 0.02;
+  this.velocity = velocity;
 
 
   this.red = red;

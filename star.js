@@ -13,7 +13,7 @@ function Star(x, y, r, red, green, blue) {
 
   this.show = function() {
     noStroke();
-    this.position.add(this.velocity);
+    this.position.add(this.velocity); 
     fill(this.red, this.green, this.blue);
     ellipse(this.position.x, this.position.y, this.r*2, this.r*2);
   }
