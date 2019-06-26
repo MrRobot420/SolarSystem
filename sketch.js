@@ -2,7 +2,10 @@ var sun;
 var mercury;
 var venus;
 var earth;
+var moon;
 var mars;
+var phobos;
+var daimos;
 var jupiter;
 var saturn;
 var uranus;
@@ -11,24 +14,30 @@ var pluto;
 var stars;
 
 // MacBook Air Display:
-let x_pixels = 1420;
-let y_pixels = 790;
+// let x_pixels = 1420;
+// let y_pixels = 790;
 
 // 1080p:
-// let x_pixels = 1900;
-// let y_pixels = 960;
+let x_pixels = 1900;
+let y_pixels = 960;
 
 function setup() {
   createCanvas(x_pixels, y_pixels);
   stars = makeStars(50);
 
   sun = new Sun(width/2, height/2, 70);
-  mercury = new Planet(sun.x, sun.y, 3, 255, 220, 0, 110);
-  venus = new Planet(sun.x, sun.y, 4, 255, 220, 0, 130);
+  mercury = new Planet(sun.x, sun.y, 3, 255, 220, 0, 80);
+  venus = new Planet(sun.x, sun.y, 4, 255, 220, 0, 95);
   earth = new Planet(sun.x, sun.y, 5, 0, 100, 255, 160);
-  moon = new Moon(earth.x, earth.y, 2, 255, 255, 255, 30)
+  moon = new Moon(earth.x, earth.y, 2, 255, 255, 255, 15);
+
   mars = new Planet(sun.x, sun.y, 4, 255, 30, 0, 195);
+  phobos = new Moon(mars.x, mars.y, 1, 250, 200, 200, 12);
+  daimos = new Moon(mars.x, mars.y, 1, 255, 255, 255, 8);
+
   jupiter = new Planet(sun.x, sun.y, 30, 255, 220, 50, 250);
+
+
   saturn = new DiskPlanet(sun.x, sun.y, 20, 255, 250, 0, 360);
   uranus = new Planet(sun.x, sun.y, 12, 0, 120, 255, 450);
   neptun = new Planet(sun.x, sun.y, 10, 0, 10, 255, 490);
@@ -86,6 +95,10 @@ function handlePlanets() {
 function handleMoons() {
   moon.show();
   moon.checkPosition(earth);
+  phobos.show();
+  phobos.checkPosition(mars);
+  daimos.show();
+  daimos.checkPosition(mars);
 }
 
 

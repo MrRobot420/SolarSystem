@@ -4,8 +4,10 @@
 function Planet(x, y, r, red, green, blue, distance) {
   this.r = r;
   this.distance = distance;
+  this.random_shift = floor(random(90));
   this.position = createVector(x + this.distance, y);
-  this.velocity = createVector(-1,-1);
+  this.radians = 0 + this.random_shift;
+  this.velocity = 0.02;
 
 
   this.red = red;
@@ -14,42 +16,13 @@ function Planet(x, y, r, red, green, blue, distance) {
 
   this.show = function() {
     noStroke();
-    this.position.add(this.velocity);
     fill(this.red, this.green, this.blue);
     ellipse(this.position.x, this.position.y, this.r*2, this.r*2);
   }
 
   this.checkPosition = function(parent) {
-    this.x_distance = this.position.x - parent.x
-    this.y_distance = this.position.y - parent.y
-
-
-    if (this.x_distance >= this.distance) {
-      this.velocity.x = -1;
-    } else if (this.x_distance <= -this.distance) {
-      this.velocity.x = 1;
-    }
-
-    if (this.y_distance >= this.distance) {
-      this.velocity.y = -1;
-    } else if (this.y_distance <= -this.distance) {
-      this.velocity.y = 1;
-    }
-
-
-
-    // if (this.position.x <= parent.x && this.position.y >= parent.y) {
-    //   this.velocity.x = 1;
-    //   this.velocity.y = 1;
-    // } else if (this.position.x >= parent.x && this.position.y >= parent.y) {
-    //   this.velocity.x = 1;
-    //   this.velocity.y = -1;
-    // } else if (this.position.x >= parent.x && this.position.y <= parent.y) {
-    //   this.velocity.x = -1;
-    //   this.velocity.y = -1;
-    // } else if (this.position.x <= parent.x && this.position.y <= parent.y) {
-    //   this.velocity.x = -1;
-    //   this.velocity.y = -1;
-    // }
+    this.radians -= this.velocity;
+    this.position.x = parent.x + Math.cos(this.radians) * this.distance;
+    this.position.y = parent.y + Math.sin(this.radians) * this.distance;
   }
 }

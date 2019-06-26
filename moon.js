@@ -3,8 +3,10 @@
 function Moon(x, y, r, red, green, blue, distance) {
   this.r = r;
   this.distance = distance;
+  this.random_shift = floor(random(90));
   this.position = createVector(x + this.distance, y);
-  this.velocity = createVector(1,1);
+  this.radians = 0 + this.random_shift;
+  this.velocity = 0.02;
 
 
   this.red = red;
@@ -13,41 +15,13 @@ function Moon(x, y, r, red, green, blue, distance) {
 
   this.show = function() {
     noStroke();
-    this.position.add(this.velocity);
     fill(this.red, this.green, this.blue);
     ellipse(this.position.x, this.position.y, this.r*2, this.r*2);
   }
 
   this.checkPosition = function(parent) {
-    this.x_distance = this.position.x - parent.x;
-    this.y_distance = this.position.y - parent.y;
-
-
-    // if ()
-
-    // if (parent.x >= 0) {
-    //   this.x_distance = this.position.x + parent.x_distance;
-    // } else {
-    //   this.x_distance = this.position.x - parent.x_distance;
-    // }
-    //
-    // if (parent.y >= 0) {
-    //   this.y_distance = this.position.y + parent.y_distance;
-    // } else {
-    //   this.y_distance = this.position.y - parent.y_distance;
-    // }
-
-
-    if (this.x_distance >= this.distance) {
-      this.velocity.x = -1;
-    } else if (this.x_distance <= -this.distance) {
-      this.velocity.x = 1;
-    }
-
-    if (this.y_distance >= this.distance) {
-      this.velocity.y = -1;
-    } else if (this.y_distance <= -this.distance) {
-      this.velocity.y = 1;
-    }
+    this.radians += this.velocity;    // Other direction!
+    this.position.x = parent.position.x + Math.cos(this.radians) * this.distance;
+    this.position.y = parent.position.y + Math.sin(this.radians) * this.distance;
   }
 }
