@@ -1,3 +1,5 @@
+// Should represent a moon that circles around a planet
+
 function Moon(x, y, r, red, green, blue, distance) {
   this.r = r;
   this.distance = distance;
