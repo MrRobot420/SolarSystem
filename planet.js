@@ -12,12 +12,14 @@ function Planet(x, y, r, red, green, blue, distance, velocity) {
   this.green = green;
   this.blue = blue;
 
+  // SHOWS the object:
   this.show = function() {
     noStroke();
     fill(this.red, this.green, this.blue);
     ellipse(this.position.x, this.position.y, this.r*2, this.r*2);
   }
 
+  // UPDATES position:
   this.checkPosition = function(parent) {
     this.radians -= this.velocity;
     this.position.x = parent.x + Math.cos(this.radians) * this.distance;

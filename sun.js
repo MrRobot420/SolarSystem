@@ -4,9 +4,10 @@ function Sun(x, y, r) {
   this.y = y;
   this.r = r;
 
+  // SHOWS the object:
   this.show = function() {
     noStroke();
-    fill(255, 255, 0);
+    fill(255, 176, 28);
     ellipse(this.x, this.y, this.r*2, this.r*2);
   }
 }

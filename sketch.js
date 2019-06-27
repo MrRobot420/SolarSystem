@@ -1,3 +1,4 @@
+/*   SELECT or ENTER your screen size (minus the browser-bar at the top):   */
 // MacBook Air Display:
 // let x_pixels = 1420;
 // let y_pixels = 790;
@@ -6,6 +7,7 @@
 let x_pixels = 1900;
 let y_pixels = 980;
 
+/*   UNCOMMENT below to include space-sound:    */
 // let song;
 //
 // function preload() {
@@ -20,31 +22,50 @@ function setup() {
 
   sun = new Sun(width/2, height/2, 60);
 
-  // INNER PLANETS:
-  mercury = new Planet(sun.x, sun.y, 3, 255, 220, 0, 80, 0.015);
-  venus = new Planet(sun.x, sun.y, 4, 255, 220, 0, 95, 0.013);
-  earth = new Planet(sun.x, sun.y, 5, 0, 100, 255, 120, 0.011);
-  moon = new Moon(earth.x, earth.y, 2, 255, 255, 255, 15, 0.015);
+  // INNER PLANETS:     ########################################################
+  mercury = new Planet(sun.x, sun.y, 3, 182, 184, 184, 80, 0.015);
+  venus = new Planet(sun.x, sun.y, 4, 255, 220, 100, 95, 0.013);
 
-  mars = new Planet(sun.x, sun.y, 4, 255, 30, 0, 150, 0.009);
-  phobos = new Moon(mars.x, mars.y, 2, 250, 200, 200, 12, 0.011);
-  daimos = new Moon(mars.x, mars.y, 1, 255, 255, 255, 8, 0.015);
+  // EARTH and moon:
+  earth = new Planet(sun.x, sun.y, 5, 28, 115, 255, 120, 0.011);
+  moon = new Moon(earth.x, earth.y, 2, 255, 255, 255, 10, 0.015);
+
+  // MARS and moons:
+  mars = new Planet(sun.x, sun.y, 4, 212, 90, 19, 150, 0.009);
+  phobos = new Moon(mars.x, mars.y, 1.5, 250, 200, 200, 12, 0.011);
+  daimos = new Moon(mars.x, mars.y, .5, 255, 255, 255, 8, 0.015);
 
   // BELT:
   asteroids = makeBelt(100, 190);
 
-  // OUTER PLANETS:
-  jupiter = new Planet(sun.x, sun.y, 20, 255, 220, 50, 250, 0.006);
-  callisto = new Moon(jupiter.x, jupiter.y, 3, 250, 200, 200, 35, 0.01);
-  ganymede = new Moon(jupiter.x, jupiter.y, 4, 250, 200, 200, 40, 0.012);
-  europa = new Moon(jupiter.x, jupiter.y, 2, 250, 200, 200, 45, 0.01);
-  io = new Moon(jupiter.x, jupiter.y, 1, 250, 200, 0, 50, 0.009);
+  // OUTER PLANETS:     ########################################################
 
-  // Could add some moons:
-  saturn = new DiskPlanet(sun.x, sun.y, 14, 255, 250, 0, 320, 0.005);
-  uranus = new DiskPlanet(sun.x, sun.y, 12, 0, 120, 255, 380, 0.004);
-  neptun = new Planet(sun.x, sun.y, 10, 0, 10, 255, 450, 0.003);
+  // JUPITER and moons:
+  jupiter = new Planet(sun.x, sun.y, 20, 181, 139, 34, 250, 0.006);
+  callisto = new Moon(jupiter.x, jupiter.y, 3, 250, 200, 200, 30, 0.01);
+  ganymede = new Moon(jupiter.x, jupiter.y, 4, 250, 200, 200, 35, 0.012);
+  europa = new Moon(jupiter.x, jupiter.y, 2, 250, 200, 200, 40, 0.01);
+  io = new Moon(jupiter.x, jupiter.y, 1, 250, 200, 0, 45, 0.009);
+
+  // SATURN and moons:
+  saturn = new DiskPlanet(sun.x, sun.y, 14, 255, 198, 54, 320, 0.005);
+  enceladus = new Moon(saturn.x, saturn.y, 4, 255, 255, 255, 19, 0.01);
+  titan = new Moon(saturn.x, saturn.y, 3, 255, 255, 0, 20, 0.009);
+  mimas = new Moon(saturn.x, saturn.y, 2, 200, 200, 200, 23, 0.007);
+
+  // URANUS and moons:
+  uranus = new Planet(sun.x, sun.y, 12, 187, 237, 237, 380, 0.004);
+  umbriel = new Moon(uranus.x, uranus.y, 3, 200, 200, 200, 20, 0.012);
+  titania = new Moon(uranus.x, uranus.y, 2, 200, 200, 200, 25, 0.01);
+  oberon = new Moon(uranus.x, uranus.y, 1.5, 200, 200, 200, 30, 0.008);
+  ariel = new Moon(uranus.x, uranus.y, 1, 200, 200, 200, 34, 0.007);
+
+  // NEPTUNE and moon:
+  neptune = new Planet(sun.x, sun.y, 10, 0, 10, 255, 450, 0.003);
+  triton = new Moon(neptune.x, neptune.y, 1.5, 255, 255, 255, 22, 0.01);
+
   pluto = new Planet(sun.x, sun.y, 2, 255, 200, 10, 480, 0.002);
+  charon = new Moon(pluto.x, pluto.y, 0.5, 255, 255, 255, 5, 0.015);
 
   // Oort Cloud:
   oort = makeBelt(200, 540);
@@ -108,7 +129,7 @@ function handlePlanets() {
   jupiter.show();
   saturn.show();
   uranus.show();
-  neptun.show();
+  neptune.show();
   pluto.show();
 
   mercury.checkPosition(sun);
@@ -118,7 +139,7 @@ function handlePlanets() {
   jupiter.checkPosition(sun);
   saturn.checkPosition(sun);
   uranus.checkPosition(sun);
-  neptun.checkPosition(sun);
+  neptune.checkPosition(sun);
   pluto.checkPosition(sun);
 }
 
@@ -143,11 +164,36 @@ function handleMoons() {
   ganymede.checkPosition(jupiter);
   io.show();
   io.checkPosition(jupiter);
+
+  // SATURN MOONS:
+  enceladus.show();
+  enceladus.checkPosition(saturn);
+  titan.show();
+  titan.checkPosition(saturn);
+  mimas.show();
+  mimas.checkPosition(saturn);
+
+  // URANUS MOONS:
+  umbriel.show();
+  umbriel.checkPosition(uranus);
+  titania.show();
+  titania.checkPosition(uranus);
+  oberon.show();
+  oberon.checkPosition(uranus);
+  ariel.show();
+  ariel.checkPosition(uranus);
+
+  //NEPTUNE MOON:
+  triton.show();
+  triton.checkPosition(neptune);
+
+  // PLUTO MOON:
+  charon.show();
+  charon.checkPosition(pluto);
 }
 
 // The MAIN draw function:
 function draw() {
-  // song.play();
   background(51);
   drawStars(stars);
   sun.show();
@@ -155,4 +201,7 @@ function draw() {
   drawBelt(asteroids);
   drawBelt(oort);
   handleMoons();
+
+  /*   UNCOMMENT below to play sounds:   */
+  // song.play();
 }
